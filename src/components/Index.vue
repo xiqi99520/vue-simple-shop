@@ -9,6 +9,7 @@
         <indexnav></indexnav>
         <buy-area></buy-area>
         <like></like>
+        <public-nav></public-nav>
     </div>
 </template>
 
@@ -17,6 +18,7 @@ import swipe from './swipe'
 import indexnav from './indexnav'
 import buyArea from './buyarea'
 import like from './like'
+import publicNav from './publicnav'
 export default {
   name: 'Index',
   data () {
@@ -28,7 +30,8 @@ export default {
     swipe,
     indexnav,
     buyArea,
-    like
+    like,
+    publicNav
   }
 }
 </script>

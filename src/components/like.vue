@@ -51,6 +51,7 @@
 	.cont-bg{
 		background-color: #eeeeee;
 		padding-top: 1.2rem;
+		padding-bottom: 2.6rem;
 	}
 	.guess-icon{
 		display: inline-block;
