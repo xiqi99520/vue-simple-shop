@@ -64,8 +64,8 @@
   }
   .slideshow ul{
     position: relative;
-    width: 20rem;
-    height: 6rem;
+    width: 100%;
+    height: 7rem;
     overflow: hidden;
   }
   .slideshow li{

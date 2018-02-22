@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg-color">
         <div class="search-area">
             <input type="text" placeholder="寻找宝贝店铺">
         </div>
@@ -7,12 +7,16 @@
             <swipe></swipe>
         </div>
         <indexnav></indexnav>
+        <buy-area></buy-area>
+        <like></like>
     </div>
 </template>
 
 <script>
 import swipe from './swipe'
 import indexnav from './indexnav'
+import buyArea from './buyarea'
+import like from './like'
 export default {
   name: 'Index',
   data () {
@@ -22,13 +26,18 @@ export default {
   },
   components:{
     swipe,
-    indexnav
+    indexnav,
+    buyArea,
+    like
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.bg-color{
+  background-color: #eeeeee;
+}
 .search-area{
     background-color: #FE5400;
     padding: .4rem 0 .4rem 0;

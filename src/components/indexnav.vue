@@ -31,6 +31,7 @@
 
 <style scoped>
   .nav-area{
+    background-color: #fff;
     overflow: hidden;
     padding: 0.6rem;
   }

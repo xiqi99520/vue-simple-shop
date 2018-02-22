@@ -34,4 +34,10 @@ body{
   margin: 0;
   padding: 0;
 }
+.clear{
+  overflow: hidden;
+}
+.pull-left{
+  float: left;
+}
 </style>
