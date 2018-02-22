@@ -40,6 +40,7 @@
 	}
 	.buy-banner{
 		margin-top: 0.6rem;
+		background-color: #fff;
 	}
 	.vertical-banner{
 		width: 35%;
