@@ -13,16 +13,16 @@
     data(){
       return {
         navArr: [
-          {'img': require('../assets/icon1.png'),'title': '天猫'},
-          {'img': require('../assets/icon2.png'),'title': '聚划算'},
-          {'img': require('../assets/icon3.png'),'title': '天猫国际'},
-          {'img': require('../assets/icon4.png'),'title': '外卖'},
-          {'img': require('../assets/icon5.png'),'title': '天猫超市'},
-          {'img': require('../assets/icon6.png'),'title': '充值中心'},
-          {'img': require('../assets/icon7.png'),'title': '飞猪旅行'},
-          {'img': require('../assets/icon8.png'),'title': '领金币'},
-          {'img': require('../assets/icon9.png'),'title': '拍卖'},
-          {'img': require('../assets/icon10.png'),'title': '分类'}
+          {'img': require('../../assets/icon1.png'),'title': '天猫'},
+          {'img': require('../../assets/icon2.png'),'title': '聚划算'},
+          {'img': require('../../assets/icon3.png'),'title': '天猫国际'},
+          {'img': require('../../assets/icon4.png'),'title': '外卖'},
+          {'img': require('../../assets/icon5.png'),'title': '天猫超市'},
+          {'img': require('../../assets/icon6.png'),'title': '充值中心'},
+          {'img': require('../../assets/icon7.png'),'title': '飞猪旅行'},
+          {'img': require('../../assets/icon8.png'),'title': '领金币'},
+          {'img': require('../../assets/icon9.png'),'title': '拍卖'},
+          {'img': require('../../assets/icon10.png'),'title': '分类'}
         ]
       }
     }

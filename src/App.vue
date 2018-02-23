@@ -7,6 +7,7 @@
 </template>
 
 <style>
+*{margin: 0;padding: 0;}
 h1, h2 {
   font-weight: normal;
 }
@@ -39,5 +40,8 @@ body{
 }
 .pull-left{
   float: left;
+}
+.pull-right{
+  float: right;
 }
 </style>

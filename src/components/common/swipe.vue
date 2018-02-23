@@ -24,10 +24,10 @@
         timer: null, //定时器
         mark: 0, //比对图片索引的变量
         imgArr: [
-          require('../assets/1.jpg'),
-          require('../assets/2.jpg'),
-          require('../assets/3.jpg'),
-          require('../assets/4.jpg')
+          require('../../assets/1.jpg'),
+          require('../../assets/2.jpg'),
+          require('../../assets/3.jpg'),
+          require('../../assets/4.jpg')
         ]
       }
     },

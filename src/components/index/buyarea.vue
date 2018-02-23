@@ -11,14 +11,14 @@
 	export default{
 		data(){
 			return {
-				buymsgall1: require('../assets/buy1.jpg'),
+				buymsgall1: require('../../assets/buy1.jpg'),
 				buymsgall: [
-					require('../assets/buy2.jpg'),
-					require('../assets/buy3.jpg'),
-					require('../assets/buy4.jpg'),
-					require('../assets/buy5.jpg')
+					require('../../assets/buy2.jpg'),
+					require('../../assets/buy3.jpg'),
+					require('../../assets/buy4.jpg'),
+					require('../../assets/buy5.jpg')
 				]
-				
+
 			}
 		}
 	}

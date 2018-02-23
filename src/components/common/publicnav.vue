@@ -1,7 +1,7 @@
 <template>
 	<div class="fix-nav clear">
 		<div v-for="item in navAll">
-			<div class="pull-left quarter">
+			<div :class="['pull-left','quarter', item==curName? 'active' : '']" @click="selected(item)" >
 				{{ item }}
 			</div>
 		</div>
@@ -12,9 +12,15 @@
 	export default{
 		data(){
 			return {
-				navAll: ['首页','物流','购物车','我的淘宝']
+				navAll: ['首页','物流','购物车','我的淘宝'],
+        curName: '首页'
 			}
-		}
+		},
+    methods: {
+      selected(activeName){
+        this.curName = activeName
+      }
+    }
 	}
 </script>
 
@@ -35,4 +41,7 @@
 		margin: 0.7rem 0;
 		color: #5D656B;
 	}
+  .active{
+    color: rgb(255, 80, 0);
+  }
 </style>

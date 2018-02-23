@@ -14,11 +14,11 @@
 </template>
 
 <script>
-import swipe from './swipe'
-import indexnav from './indexnav'
-import buyArea from './buyarea'
-import like from './like'
-import publicNav from './publicnav'
+import swipe from './common/swipe'
+import indexnav from './index/indexnav'
+import buyArea from './index/buyarea'
+import like from './index/like'
+import publicNav from './common/publicnav'
 export default {
   name: 'Index',
   data () {

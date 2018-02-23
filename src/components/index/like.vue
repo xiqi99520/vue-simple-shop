@@ -5,11 +5,13 @@
 			<span class="desc">实时推荐最适合你的宝贝</span>
 			<div class="cont-bg clear">
 				<div v-for="item in products" class="half-width">
-					<div class="products-pic" :style="{backgroundImage: 'url('+ item.src +')'}"></div>
-					<p class="products-title">{{ item.title }}</p>
-					<div class="prize">
-						￥{{ item.prize }}
-					</div>
+          <router-link to="/detail">
+            <div class="products-pic" :style="{backgroundImage: 'url('+ item.src +')'}"></div>
+            <p class="products-title">{{ item.title }}</p>
+            <div class="prize">
+              ￥{{ item.prize }}
+            </div>
+          </router-link>
 				</div>
 			</div>
 		</div>
@@ -21,15 +23,20 @@
 		data(){
 			return {
 				sectitle: '猜你喜欢',
-				icon: require('../assets/icon_like.png'),
+				icon: require('../../assets/icon_like.png'),
 				products: [
-					{src: require('../assets/product1.jpg'),title: '[为你推荐]特价铁架立式穿衣镜/全身镜/试衣镜/落地更衣镜子/浴室镜/挂墙镜', prize: '30.0'},
-					{src: require('../assets/product2.jpg'),title: '[为你推荐]特价铁架立式穿衣镜/全身镜/试衣镜/落地更衣镜子/浴室镜/挂墙镜', prize: '30.0'},
-					{src: require('../assets/product3.jpg'),title: '[为你推荐]特价铁架立式穿衣镜/全身镜/试衣镜/落地更衣镜子/浴室镜/挂墙镜', prize: '30.0'},
-					{src: require('../assets/product4.jpg'),title: '[为你推荐]特价铁架立式穿衣镜/全身镜/试衣镜/落地更衣镜子/浴室镜/挂墙镜', prize: '30.0'},
+					{src: require('../../assets/detail1.jpg'),title: '[为你推荐]Apple/苹果 iPhone 8', prize: '5888.0'},
+					{src: require('../../assets/product2.jpg'),title: '[为你推荐]特价铁架立式穿衣镜/全身镜/试衣镜/落地更衣镜子/浴室镜/挂墙镜', prize: '30.0'},
+					{src: require('../../assets/product3.jpg'),title: '[为你推荐]特价铁架立式穿衣镜/全身镜/试衣镜/落地更衣镜子/浴室镜/挂墙镜', prize: '30.0'},
+					{src: require('../../assets/product4.jpg'),title: '[为你推荐]特价铁架立式穿衣镜/全身镜/试衣镜/落地更衣镜子/浴室镜/挂墙镜', prize: '30.0'},
 				]
 			}
-		}
+		},
+    created(){
+      for(var i=0;i<this.products.length;i++){
+        this.products[i].title = this.products[i].title.slice(0,25)+'...';
+      }
+    }
 	}
 </script>
 
@@ -40,6 +47,9 @@
 		background-color: #ffffff;
 		margin-bottom: 0.4rem;
 	}
+  .half-width a{
+    text-decoration: none;
+  }
 	.guess-title{
 		height: 2rem;
 		line-height: 2rem;
@@ -72,7 +82,6 @@
 	.products-pic{
 		width: 100%;
 		height: 12rem;
-		float: left;
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center;
