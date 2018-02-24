@@ -23,6 +23,14 @@ li {
 a {
   color: #42b983;
 }
+a:link,
+a:active,
+a:visited,
+a:hover {
+    background: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

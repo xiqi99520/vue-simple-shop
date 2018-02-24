@@ -17,23 +17,39 @@
     <div class="segmentation">
       -----详情-----
     </div>
+    <div class="desc-pic">
+      <img v-for="item in descAll" :src="item" alt="">
+    </div>
+    <footer-menu></footer-menu>
+    <transition name="slideup">
+      <popup v-show="isShow"></popup>
+    </transition>
   </div>
 </template>
 
 <script>
   import detailSlide from './detail/detailslide'
+  import footerMenu from './detail/footermenu'
+  import popup from './detail/popup'
   export default {
     data(){
       return {
+        isShow: false,
         productName: 'Apple/苹果 iphone8',
         productPrize: '5888-7188',
         stagingDesc: '商品最高可享12期免息',
         courier: '10.0',
-        city: '上海'
+        city: '上海',
+        descAll: [
+          require('../assets/detail_first.png'),
+          require('../assets/detail_second.png')
+        ]
       }
     },
     components: {
-      detailSlide
+      detailSlide,
+      footerMenu,
+      popup
     }
   }
 </script>
@@ -76,6 +92,36 @@
     font-size: .6rem;
     color: #999;
     padding: 0.8rem 0;
+  }
+  .desc-pic{
+    padding-bottom: 60px;
+  }
+  .desc-pic img{
+    width: 100%;
+  }
+  .slideup-enter-active {
+    animation-name: slide-up;
+    animation-duration: .5s;
+  }
+  .slideup-leave-active {
+    animation-name: slide-out;
+    animation-duration: .5s;
+  }
+  @keyframes slide-up {
+    0% {
+      transform: translate3d(0, 100%, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  @keyframes slide-out {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, 100%, 0);
+    }
   }
 </style>
 
