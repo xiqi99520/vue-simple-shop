@@ -10,12 +10,13 @@
       </div>
       <div class="buy-menu pull-left clear">
         <div class="half btn-orange pull-left">加入购物车</div>
-        <div class="half btn-red pull-left">立即购买</div>
+        <div class="half btn-red pull-left" @click="change">立即购买</div>
       </div>
   </div>
 </template>
 
 <script>
+  import { mapMutation } from 'vuex'
   export default{
     data(){
       return {
@@ -25,7 +26,10 @@
           {pic: require('../../assets/heart.svg'), title: '收藏', url: '/detail'},
         ]
       }
-    }
+    },
+    /*methods:{
+      ...mapMutation(['change'])
+    }*/
   }
 </script>
 

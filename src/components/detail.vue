@@ -22,7 +22,7 @@
     </div>
     <footer-menu></footer-menu>
     <transition name="slideup">
-      <popup v-show="isShow"></popup>
+      <popup v-show="isshow"></popup>
     </transition>
   </div>
 </template>
@@ -31,10 +31,11 @@
   import detailSlide from './detail/detailslide'
   import footerMenu from './detail/footermenu'
   import popup from './detail/popup'
+  import store from '../store/index'
+  import { mapState } from 'vuex'
   export default {
     data(){
       return {
-        isShow: false,
         productName: 'Apple/苹果 iphone8',
         productPrize: '5888-7188',
         stagingDesc: '商品最高可享12期免息',
@@ -46,6 +47,10 @@
         ]
       }
     },
+    computed: {
+      ...mapState(['isshow'])
+    },
+    store,
     components: {
       detailSlide,
       footerMenu,

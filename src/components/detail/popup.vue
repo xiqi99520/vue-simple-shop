@@ -27,7 +27,7 @@
                 </div>
               </li>
               <li>
-                <h2 id="prop_title_2">存储容量</h2>
+                <h2>存储容量</h2>
                 <div class="items">
                   <a v-for="item in toggleAll" role="radio" href="javascript:void(0)" :class="[isChoiceCapacity?'checked':'']" @click="capacityToggle()">{{ item }}</a>
                 </div>
@@ -44,7 +44,7 @@
             </ul>
           </div>
           <div class="footer">
-            <a class="ok " role="button">确定</a>
+            <a class="ok" role="button">确定</a>
           </div>
       </div>
   </div>
