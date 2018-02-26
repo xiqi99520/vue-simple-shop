@@ -1,5 +1,8 @@
 <template>
   <div class="detail-bg">
+    <router-link to="/">
+      <div class="goback">&lt;</div>
+    </router-link>
     <detail-slide></detail-slide>
     <div class="title-area">
       <p class="product-name">{{ productName }}</p>
@@ -54,6 +57,19 @@
 </script>
 
 <style scoped>
+  .goback{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    background: rgba(0,0,0,.4);
+    color: #eee;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 11;
+  }
   .detail-bg{
     background-color: #eeeeee;
   }
