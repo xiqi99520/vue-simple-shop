@@ -102,6 +102,7 @@
         let _this = this;
         axios.get('/static/basic.json').then(function(res){
           if(res){
+            _this.close();
             _this.$router.push('success')
           }
         })
