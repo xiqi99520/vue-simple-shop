@@ -21,9 +21,7 @@
       <img v-for="item in descAll" :src="item" alt="">
     </div>
     <footer-menu></footer-menu>
-    <transition name="slideup">
-      <popup v-show="isshow"></popup>
-    </transition>
+    <popup></popup>
   </div>
 </template>
 
@@ -32,7 +30,6 @@
   import footerMenu from './detail/footermenu'
   import popup from './detail/popup'
   import store from '../store/index'
-  import { mapState } from 'vuex'
   export default {
     data(){
       return {
@@ -46,9 +43,6 @@
           require('../assets/detail_second.png')
         ]
       }
-    },
-    computed: {
-      ...mapState(['isshow'])
     },
     store,
     components: {
@@ -103,30 +97,6 @@
   }
   .desc-pic img{
     width: 100%;
-  }
-  .slideup-enter-active {
-    animation-name: slide-up;
-    animation-duration: .5s;
-  }
-  .slideup-leave-active {
-    animation-name: slide-out;
-    animation-duration: .5s;
-  }
-  @keyframes slide-up {
-    0% {
-      transform: translate3d(0, 100%, 0);
-    }
-    100% {
-      transform: translate3d(0, 0, 0);
-    }
-  }
-  @keyframes slide-out {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-    100% {
-      transform: translate3d(0, 100%, 0);
-    }
   }
 </style>
 

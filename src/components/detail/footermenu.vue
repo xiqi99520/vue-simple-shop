@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import { mapMutation } from 'vuex'
+  import { mapMutations } from 'vuex'
   export default{
     data(){
       return {
@@ -27,9 +27,9 @@
         ]
       }
     },
-    /*methods:{
-      ...mapMutation(['change'])
-    }*/
+    methods:{
+      ...mapMutations(['change'])
+    }
   }
 </script>
 

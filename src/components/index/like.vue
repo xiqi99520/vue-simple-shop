@@ -4,7 +4,7 @@
 			<span class="guess-icon" :style="{backgroundImage:'url('+icon+')'}"></span>{{ sectitle }}
 			<span class="desc">实时推荐最适合你的宝贝</span>
 			<div class="cont-bg clear">
-				<div v-for="item in products" class="half-width">
+				<div v-for="item in prosAll" class="half-width">
           <router-link to="/detail">
             <div class="products-pic" :style="{backgroundImage: 'url('+ item.src +')'}"></div>
             <p class="products-title">{{ item.title }}</p>
@@ -19,6 +19,7 @@
 </template>
 
 <script type="text/javascript">
+  import axios from 'axios'
 	export default{
 		data(){
 			return {
@@ -29,13 +30,20 @@
 					{src: require('../../assets/product2.jpg'),title: '[为你推荐]特价铁架立式穿衣镜/全身镜/试衣镜/落地更衣镜子/浴室镜/挂墙镜', prize: '30.0'},
 					{src: require('../../assets/product3.jpg'),title: '[为你推荐]特价铁架立式穿衣镜/全身镜/试衣镜/落地更衣镜子/浴室镜/挂墙镜', prize: '30.0'},
 					{src: require('../../assets/product4.jpg'),title: '[为你推荐]特价铁架立式穿衣镜/全身镜/试衣镜/落地更衣镜子/浴室镜/挂墙镜', prize: '30.0'},
-				]
+				],
+        prosAll: ''
 			}
 		},
     created(){
       for(var i=0;i<this.products.length;i++){
         this.products[i].title = this.products[i].title.slice(0,25)+'...';
       }
+    },
+    mounted(){
+      let _this = this;
+      axios.get('/static/basic.json').then(function(res){
+        _this.prosAll = eval(res.data)
+      })
     }
 	}
 </script>

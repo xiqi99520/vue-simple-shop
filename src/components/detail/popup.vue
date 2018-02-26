@@ -1,64 +1,70 @@
 <template>
-  <div class="popup">
-      <div class="trade"></div>
-      <div class="choice">
-          <div class="header">
-            <div class="pruduct-pic">
-              <img :src="smallAll[0]" alt="">
+  <div class="popup" v-show="ishide">
+      <transition name="opacity">
+        <div class="trade" v-show="isshow"></div>
+      </transition>
+
+      <transition name="slideup">
+        <div class="choice" v-show="isshow">
+            <div class="header">
+              <div class="pruduct-pic">
+                <img :src="smallAll[0]" alt="">
+              </div>
+              <div class="basic-info">
+                <p class="prize">￥{{ prize }}</p>
+                <p>请选择：{{ strAttr }}</p>
+              </div>
+              <div class="close" :style="'backgroundImage:url('+iconClose+')'" @click="close"></div>
             </div>
-            <div class="basic-info">
-              <p class="prize">￥{{ prize }}</p>
-              <p>{{ choiced + strAttr }}</p>
-            </div>
-            <div class="close" :style="'backgroundImage:url('+iconClose+')'"></div>
-          </div>
-          <div class="cont">
-            <ul class="list-wrap">
-              <li>
-                <h2 id="">机身颜色</h2>
-                <div class="items">
-                  <a v-for="(item,index) in colorAll" href="javascript:void(0)" :data-image="smallAll[index+1]" :class="[isChoiceColor?'checked':'']" @click="colorToggle()">{{ item }}</a>
-                </div>
-              </li>
-              <li>
-                <h2>网络类型</h2>
-                <div class="items">
-                  <a role="radio" href="javascript:void(0)" :class="[isChoiceType?'checked':'']" @click="typeToggle()">无需合约版</a>
-                </div>
-              </li>
-              <li>
-                <h2>存储容量</h2>
-                <div class="items">
-                  <a v-for="item in toggleAll" role="radio" href="javascript:void(0)" :class="[isChoiceCapacity?'checked':'']" @click="capacityToggle()">{{ item }}</a>
-                </div>
-              </li>
-              <li name="num">
-                <div class="number-line">
-                  <label for="number">购买数量</label>
-                  <span class="J_limitTxt limit-txt"></span>
-                  <div class="number">
-                    <button class="decrease disabled pull-left">-</button> <input class="pull-left" id="number" type="number" value="1"> <button class="increase pull-left">+</button>
+            <div class="cont">
+              <ul class="list-wrap">
+                <li>
+                  <h2 id="">机身颜色</h2>
+                  <div class="items">
+                    <a v-for="(item,index) in colorAll" href="javascript:void(0)" :data-image="smallAll[index+1]" :class="[index === curChoice?'checked':'']" @click="colorToggle(index)">{{ item }}</a>
                   </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div class="footer">
-            <a class="ok" role="button">确定</a>
-          </div>
-      </div>
+                </li>
+                <li>
+                  <h2>网络类型</h2>
+                  <div class="items">
+                    <a role="radio" href="javascript:void(0)" :class="[isChoiceType?'checked':'']" @click="typeToggle()">无需合约版</a>
+                  </div>
+                </li>
+                <li>
+                  <h2>存储容量</h2>
+                  <div class="items">
+                    <a v-for="(item,index) in toggleAll" role="radio" href="javascript:void(0)" :class="[index === curCapacity?'checked':'']" @click="capacityToggle(index)">{{ item }}</a>
+                  </div>
+                </li>
+                <li name="num">
+                  <div class="number-line">
+                    <label for="number">购买数量</label>
+                    <span class="J_limitTxt limit-txt"></span>
+                    <div class="number">
+                      <button class="decrease disabled pull-left" @click="subtract">-</button> <input class="pull-left" id="number" type="number" :value="buynum"> <button class="increase pull-left" @click="add">+</button>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="footer">
+              <a class="ok" role="button" @click="sure">确定</a>
+            </div>
+        </div>
+      </transition>
   </div>
 </template>
 
 <script>
+  import { mapState,mapMutations,mapActions } from 'vuex'
+  import axios from 'axios'
   export default{
     data(){
       return {
         prize: '7188',
-        choiced: '请选择：',
+        choiced: '',
         attrAll: ['机身颜色','网络类型','存储容量'],
         colorAll: ['银色','金色','深空灰色'],
-        strAttr: '',
         smallAll: [
           require('../../assets/popup1.jpg'),
           require('../../assets/popup2.jpg'),
@@ -67,26 +73,38 @@
         ],
         toggleAll: ['64GB','256GB'],
         iconClose: require('../../assets/btnclose.svg'),
-        isChoiceColor: false,
         isChoiceType: false,
-        isChoiceCapacity: false
+        curChoice: null,
+        curCapacity: null
       }
     },
-    created(){
-      this.init()
+    computed: {
+      ...mapState(['isshow','ishide','buynum']),
+      strAttr(){
+        console.log(1)
+        return this.attrAll.toString()
+      }
     },
     methods:{
-      init(){
-        this.strAttr = this.attrAll.toString()
-      },
-      colorToggle(){
-        this.isChoiceColor = !this.isChoiceColor
+      ...mapMutations(['subtract','add']),
+      ...mapActions(['close']),
+      colorToggle(index){
+        this.curChoice = index;
+        this.attrAll[0] = this.colorAll[index];
       },
       typeToggle(){
         this.isChoiceType = !this.isChoiceType
       },
-      capacityToggle(){
-        this.isChoiceCapacity = !this.isChoiceCapacity
+      capacityToggle(index){
+        this.curCapacity = index;
+      },
+      sure(){
+        let _this = this;
+        axios.get('/static/basic.json').then(function(res){
+          if(res){
+            _this.$router.push('success')
+          }
+        })
       }
     }
   }
@@ -109,6 +127,7 @@
     left: 0;
     top: 0;
     z-index: 18;
+    opacity: 1;
   }
   .choice{
     min-height: 100vh;
@@ -260,5 +279,53 @@
     color: #fff;
     background-color: #FF0036;
     text-align: center;
+  }
+  .opacity-enter-active {
+    animation-name: changeShow;
+    animation-duration: .5s;
+  }
+  .opacity-leave-active {
+    animation-name: changeHide;
+    animation-duration: .5s;
+  }
+  @keyframes changeShow {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes changeHide {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .slideup-enter-active {
+    animation-name: slide-up;
+    animation-duration: .5s;
+  }
+  .slideup-leave-active {
+    animation-name: slide-out;
+    animation-duration: .5s;
+  }
+  @keyframes slide-up {
+    0% {
+      transform: translate3d(0, 100%, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  @keyframes slide-out {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, 100%, 0);
+    }
   }
 </style>
