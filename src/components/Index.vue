@@ -1,7 +1,9 @@
 <template>
     <div class="bg-color">
         <div class="search-area">
-            <input type="text" placeholder="寻找宝贝店铺">
+            <router-link to="/list">
+                <input type="text" placeholder="寻找宝贝店铺" disabled="disabled">
+            </router-link>
         </div>
         <div class="swipe-area">
             <swipe></swipe>
