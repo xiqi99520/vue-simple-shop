@@ -4,7 +4,7 @@
 
 ## 预览
 
-![预览](http://www.zhangxinlu.com/feng6.png)
+![预览](https://github.com/xiqi99520/vue-simple-shop/blob/master/src/assets/feng6.png)
 
 ## 构建指南
 
