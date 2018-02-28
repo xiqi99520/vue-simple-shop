@@ -2,7 +2,11 @@
 
 > 基于vue开发的仿淘宝商城
 
-## Build Setup
+## 预览
+
+![预览](http://www.zhangxinlu.com/feng5.png)
+
+## 构建指南
 
 ``` bash
 # install dependencies
