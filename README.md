@@ -4,7 +4,7 @@
 
 ## 预览
 
-![预览](http://www.zhangxinlu.com/feng5.png)
+![预览](http://www.zhangxinlu.com/feng6.png)
 
 ## 构建指南
 
