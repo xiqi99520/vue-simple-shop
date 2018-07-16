@@ -41,7 +41,7 @@
     },
     mounted(){
       let _this = this;
-      axios.get('/static/basic.json').then(function(res){
+      axios.get('/vue-simple-shop/dist/static/basic.json').then(function(res){
         _this.prosAll = eval(res.data)
       })
     }
